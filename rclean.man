@@ -45,6 +45,8 @@ will the administration box's to allow it to receive the remote syslog messages.
 .B -v 
 Sets the script to verbose mode. Each significant action will be reported
 on standard out.
+.SH FILES
+.I rclean.cf
 .SH EXAMPLES
 .nf
 .ft CW

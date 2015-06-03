@@ -4,10 +4,11 @@
 <a href="#heading3">AVAILABILITY</a><br/>
 <a href="#heading4">DESCRIPTION</a><br/>
 <a href="#heading5">OPTIONS</a><br/>
-<a href="#heading6">EXAMPLES</a><br/>
-<a href="#heading7">BUGS</a><br/>
-<a href="#heading8">SEE ALSO</a><br/>
-<a href="#heading9">AUTHOR</a><br/>
+<a href="#heading6">FILES</a><br/>
+<a href="#heading7">EXAMPLES</a><br/>
+<a href="#heading8">BUGS</a><br/>
+<a href="#heading9">SEE ALSO</a><br/>
+<a href="#heading10">AUTHOR</a><br/>
 
 </p>
 <hr/>
@@ -136,11 +137,18 @@ Each significant action will be reported on standard
 out.</p> </td></tr>
 </table>
 
-<h2 id="heading6">EXAMPLES
+<h2 id="heading6">FILES
 </h2>
 
 
-<pre style="margin-left:11%; margin-top: 1em">5 0 * * * su - fulford -c &quot;/usr/local/etc/<a href="./scripts.php?script=rclean">rclean</a> -a 8 albert&quot;</pre>
+
+<p style="margin-left:11%; margin-top: 1em"><i><a href="./scripts.php?script=rclean.cf">rclean.cf</a></i></p>
+
+<h2 id="heading7">EXAMPLES
+</h2>
+
+
+<pre style="margin-left:11%; margin-top: 1em"><i>5 0 * * * su - fulford -c &quot;/usr/local/etc/rclean -a 8 albert&quot;</i></pre>
 
 
 <p style="margin-left:11%; margin-top: 1em">The above is an
@@ -155,7 +163,7 @@ case is 8 days.</p>
 hostname <i>albert</i> is being resolved locally and does
 not require a fully qualified domain.</p>
 
-<h2 id="heading7">BUGS
+<h2 id="heading8">BUGS
 </h2>
 
 
@@ -169,14 +177,14 @@ disk space. The script does depend on very specific file
 names and paths. It could be made more generic by adding a
 configuration file.</p>
 
-<h2 id="heading8">SEE ALSO
+<h2 id="heading9">SEE ALSO
 </h2>
 
 
 <p style="margin-left:11%; margin-top: 1em"><a href="./scripts.php?script=chkdf&amp;man=y">chkdf</a>,
 <a href="./scripts.php?script=chkftpd&amp;man=y">chkftpd</a>, <a href="./scripts.php?script=chkfw&amp;man=y">chkfw</a>, <a href="./scripts.php?script=secscan&amp;man=y">secscan</a>.</p>
 
-<h2 id="heading9">AUTHOR
+<h2 id="heading10">AUTHOR
 </h2>
 
 
