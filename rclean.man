@@ -1,17 +1,17 @@
 .TH CLEAN 8l "04 October rhost
 .SH NAME
-.B clean
+.B rclean
 - selectively archives and deletes old files on a remote host
 .SH SYNOPSIS
-\fBclean \fR[\fB-a \fI<age>\fR] [\fB-c \fI<config>\fR] [\fB-d\fR] [\fB-l\fR]
+\fBrclean \fR[\fB-a \fI<age>\fR] [\fB-c \fI<config>\fR] [\fB-d\fR] [\fB-l\fR]
 [\fB-t\fR] [\fB-v\fR] \fI<host_name>\fR
 .br
 .SH AVAILABILITY
-.B clean
+.B rclean
 is a Bourne shell script which should work equally well on all versions of UNIX
 and Linux.
 .SH DESCRIPTION
-.B clean
+.B rclean
 Is a hardwired host specific script used to keep a remote server's file
 system reasonably tidy.
 .SH OPTIONS
@@ -24,7 +24,7 @@ command line option.
 .TP 5
 .B -c 
 .I <config_file>
-The default \fIconfiguration file\fR is \fB/usr/local/etc/clean.cf\fR. An 
+The default \fIconfiguration file\fR is \fB/usr/local/etc/rclean.cf\fR. An 
 alternative configuration file may be set with the \fB-c\fR option on the 
 command line.
 .TP
@@ -48,7 +48,7 @@ on standard out.
 .SH EXAMPLES
 .nf
 .ft CW
-5 0 * * * su - fulford -c "/usr/local/etc/clean -a 8 albert"
+5 0 * * * su - fulford -c "/usr/local/etc/rclean -a 8 albert"
 .ft R
 .fi
 .LP
