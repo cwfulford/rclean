@@ -1,197 +1,136 @@
+<h2 id="heading1">NAME</h2>
+<p class="indent">
+<b><a href="./scripts.php?script=rclean">rclean</a></b>
+- selectively archives and deletes old files on a remote host
+</p>
+<h2 id="heading2">SYNOPSIS</h2>
+<p class="indent">
 
-<p><a href="#heading1">NAME</a><br/>
-<a href="#heading2">SYNOPSIS</a><br/>
-<a href="#heading3">AVAILABILITY</a><br/>
-<a href="#heading4">DESCRIPTION</a><br/>
-<a href="#heading5">OPTIONS</a><br/>
-<a href="#heading6">FILES</a><br/>
-<a href="#heading7">EXAMPLES</a><br/>
-<a href="#heading8">BUGS</a><br/>
-<a href="#heading9">SEE ALSO</a><br/>
-<a href="#heading10">AUTHOR</a><br/>
+<b><a href="./scripts.php?script=rclean">rclean</a> </b>
+[
+<b>-a </b>
+<i>&lt;age&gt;</i>
+] [
+<b>-c </b>
+<i>&lt;config&gt;</i>
+] [
+<b>-d</b>
+] [
+<b>-l</b>
+]
+[
+<b>-t</b>
+] [
+<b>-v</b>
+] 
+<i>&lt;host_name&gt;</i>
+
+<br/>
+</p>
+<h2 id="heading3">AVAILABILITY</h2>
+<p class="indent">
+<b><a href="./scripts.php?script=rclean">rclean</a></b>
+is a Bourne shell script which should work equally well on all versions of UNIX
+and Linux.
+</p>
+<h2 id="heading4">DESCRIPTION</h2>
+<p class="indent">
+<b><a href="./scripts.php?script=rclean">rclean</a></b>
+Is a hardwired host specific script used to keep a remote server's file
+system reasonably tidy.
+</p>
+<h2 id="heading5">OPTIONS</h2>
+<p class="indent">
+</p>
+<p class="indent">
+
+<b>-a </b>
+<i>#days</i>
+
+Sets the minimum age threshold in days before files may be deleted. This 
+value is normally set in the 
+<i>configuration file</i>
+. The default is
+100 days. Both the configuration file and the default are trumped by the
+command line option.
+</p>
+<p class="indent">
+<b>-c </b>
+<i>&lt;config_file&gt;</i>
+The default 
+<i>configuration file</i>
+ is 
+<b>/usr/local/etc/<a href="./scripts.php?script=rclean.cf">rclean.cf</a></b>
+. An 
+alternative configuration file may be set with the 
+<b>-c</b>&nbsp;&nbsp;&nbsp;
+ option on the 
+command line.
+</p>
+<p class="indent">
+<b>-d </b>
+sets the script to debug mode (ie. runs with the shell option -x)
+</p>
+<p class="indent">
+<b>-l</b>&nbsp;&nbsp;&nbsp;
+turns on logging using the 
+<b>syslog</b>
+facility. This is particularly useful where statistics are being compiled
+for presentation to the client, see 
+<i>report</i>.
+
+Just to make life harder the logging is done by the remote host so that 
+host's logging facility will need to be configured for remote logging as 
+will the administration box's to allow it to receive the remote syslog messages.
+</p>
+<p class="indent">
+<b>-v </b>
+Sets the script to verbose mode. Each significant action will be reported
+on standard out.
+</p>
+<h2 id="heading7">FILES</h2>
+<p class="indent">
+<i><a href="./scripts.php?script=rclean.cf">rclean.cf</a></i>
+</p>
+<h2 id="heading6">EXAMPLES</h2>
+<p class="indent">
+</p><div class="cmdline">
+<pre>
+5 0 * * * su - fulford -c "/usr/local/etc/rclean -a 8 albert"
+</pre></div>
+<p class="indent">
+</p>
+<p class="indent">
+The above is an extract from a root 
+<b>crontab </b>
+file and illustrates the typical use of the script in practice. The files to
+be deleted or archived are specified within the script itself but the minimum
+age of the files before deletion is more flexible as it is specified on
+the command line and in this case is 8 days.
+</p>
+<p class="indent">
+<b>NB.</b>
+The hostname 
+<i>albert</i>
+is being resolved locally and does not require a fully qualified domain.
+</p>
+<h2 id="heading8">BUGS</h2>
+<p class="indent">
+The script is quite crude having been developed to address problems experienced
+by City Linux clients that were running out of disk space. The script does
+depend on very specific file names and paths. It could be made more generic
+by adding a configuration file.
 
 </p>
-<hr/>
-
-
-<h2 id="heading1">NAME
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=rclean">rclean</a></b> -
-selectively archives and deletes old files on a remote
-host</p>
-
-<h2 id="heading2">SYNOPSIS
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=rclean">rclean</a></b>
-[<b>-a</b> <i>&lt;age&gt;</i>] [<b>-c</b>
-<i>&lt;config&gt;</i>] [<b>-d</b>] [<b>-l</b>] [<b>-t</b>]
-[<b>-v</b>] <i>&lt;host_name&gt;</i></p>
-
-<h2 id="heading3">AVAILABILITY
-</h2>
-
-
-
-<p style="margin-left:11%; margin-top: 1em"><i><b><a href="./scripts.php?script=rclean">rclean</a></b></i>
-is a Bourne shell script which should work equally well on
-all versions of UNIX and Linux.</p>
-
-<h2 id="heading4">DESCRIPTION
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=rclean">rclean</a></b>
-Is a hardwired host specific script used to keep a remote
-server&rsquo;s file system reasonably tidy.</p>
-
-<h2 id="heading5">OPTIONS
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><b>-a</b>
-<i>#days</i></p>
-
-<p style="margin-left:18%;">Sets the minimum age threshold
-in days before files may be deleted. This value is normally
-set in the <i>configuration file</i>. The default is 100
-days. Both the configuration file and the default are
-trumped by the command line option.</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<colgroup><col width="11%"></col>
-<col width="3%"></col>
-<col width="4%" class="center"></col>
-<col width="82%"></col>
-</colgroup>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p><b>-c</b></p></td>
-<td></td>
-<td>
-
-
-<p><i>&lt;config_file&gt;</i> The default <i>configuration
-file</i> is <b>/usr/local/etc/rclean.cf</b>. An alternative
-configuration file may be set with the <b>-c</b> option on
-the command line.</p></td></tr>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p><b>-d</b></p></td>
-<td></td>
-<td>
-
-
-<p>sets the script to debug mode (ie. runs with the shell
-option -x)</p></td></tr>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p><b>-l</b></p></td>
-<td></td>
-<td>
-
-
-<p>turns on logging using the <b>syslog</b> facility. This
-is particularly useful where statistics are being compiled
-for presentation to the client, see <i>report</i>.</p></td></tr>
-</table>
-
-<p style="margin-left:18%; margin-top: 1em">Just to make
-life harder the logging is done by the remote host so that
-host&rsquo;s logging facility will need to be configured for
-remote logging as will the administration box&rsquo;s to
-allow it to receive the remote syslog messages.</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<colgroup><col width="11%"></col>
-<col width="3%"></col>
-<col width="4%" class="center"></col>
-<col width="82%"></col>
-</colgroup>
-<tr valign="top" align="left">
-<td></td>
-<td>
-
-
-<p style="margin-top: 1em"><b>-v</b></p></td>
-<td></td>
-<td>
-
-
-<p style="margin-top: 1em">Sets the script to verbose mode.
-Each significant action will be reported on standard
-out.</p> </td></tr>
-</table>
-
-<h2 id="heading6">FILES
-</h2>
-
-
-
-<p style="margin-left:11%; margin-top: 1em"><i><a href="./scripts.php?script=rclean.cf">rclean.cf</a></i></p>
-
-<h2 id="heading7">EXAMPLES
-</h2>
-
-
-<pre style="margin-left:11%; margin-top: 1em"><i>5 0 * * * su - fulford -c &quot;/usr/local/etc/rclean -a 8 albert&quot;</i></pre>
-
-
-<p style="margin-left:11%; margin-top: 1em">The above is an
-extract from a root <b>crontab</b> file and illustrates the
-typical use of the script in practice. The files to be
-deleted or archived are specified within the script itself
-but the minimum age of the files before deletion is more
-flexible as it is specified on the command line and in this
-case is 8 days.</p>
-
-<p style="margin-left:11%; margin-top: 1em"><b>NB</b>. The
-hostname <i>albert</i> is being resolved locally and does
-not require a fully qualified domain.</p>
-
-<h2 id="heading8">BUGS
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">The script is
-quite crude having been developed to address problems
-experienced by <a href="http://www.citylinux.com"
-title="Go to the City Linux homepage">
-City Linux
-</a> clients that were running out of
-disk space. The script does depend on very specific file
-names and paths. It could be made more generic by adding a
-configuration file.</p>
-
-<h2 id="heading9">SEE ALSO
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><a href="./scripts.php?script=chkdf&amp;man=y">chkdf</a>,
-<a href="./scripts.php?script=chkftpd&amp;man=y">chkftpd</a>, <a href="./scripts.php?script=chkfw&amp;man=y">chkfw</a>, <a href="./scripts.php?script=secscan&amp;man=y">secscan</a>.</p>
-
-<h2 id="heading10">AUTHOR
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">Clifford W
-Fulford, <a href="http://www.citylinux.com"
-title="Go to the City Linux homepage">
-City Linux
-</a>. Contact <a href="mailto:fulford@fulford.net" title="Send mail to Clifford W Fulford">fulford@fulford.net</a> or +44
-(0)709 229 5385.</p>
-<hr/>
+<h2 id="heading9">SEE ALSO</h2>
+<p class="indent">
+<a href="./scripts.php?script=chkdf&man=y"><i>chkdf</i>,</a>
+<a href="./scripts.php?script=chkftpd&man=y"><i>chkftpd</i>,</a>
+<a href="./scripts.php?script=chkfw&man=y"><i>chkfw</i>,</a>
+<a href="./scripts.php?script=secscan&man=y"><i>secscan</i>.</a>
+</p>
+<h2 id="heading10">AUTHOR</h2>
+<p class="indent">
+Clifford W Fulford, City Linux. Contact fulford@fulford.net or +44 (0)709 229 5385.
+</p>
+	
