@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: rclean,v 1.152 2017/01/02 19:39:34 fulford Exp fulford $
+# $Id: rclean,v 1.153 2017/01/02 19:53:01 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/rclean,v $
-# $Revision: 1.152 $
+# $Revision: 1.153 $
 # Author C W Fulford.
 # Copyright (c) 2012-2013 C W Fulford.
 # Licensed for public use under the LGPL.
@@ -53,6 +53,8 @@ eval `sed -ne '/^'$hostid':/,/^[\t ]*$/{
 
 age=${age:-100} # max age in days before deletion
 [ "$orage" ] && age=$orage # command line trumps default and config
+
+awk  <$tconf '/target:/ {split(t,":",$1);print("cmd=\"find $2 -ctime=$3 -ls\")}' 
 
 echo "
 #!/bin/bash
@@ -116,7 +118,6 @@ while read f ;do
 	fi
 done
 
-awk  <$tconf '/target:/ {split(t,":",$1);cmd="find $2 -ctime=$3 -ls"}' 
 # use local0.info to match rsyslog configuration
 if [ $log ];then 
 	cfd=\$(<\$dcount)
