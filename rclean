@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: rclean,v 1.150 2017/01/02 19:18:55 fulford Exp $
+# $Id: rclean,v 1.151 2017/01/02 19:28:39 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/rclean,v $
-# $Revision: 1.150 $
+# $Revision: 1.151 $
 # Author C W Fulford.
 # Copyright (c) 2012-2013 C W Fulford.
 # Licensed for public use under the LGPL.
@@ -31,6 +31,7 @@ config=${config:-"/usr/local/etc/rclean.cf"}
 debug=${debug:-""}
 log=${log:-""}
 tag=$cmd
+tconf=/tmp/$cmd.$$
 testmode=${testmode:-""}
 tmp=/tmp/clean$$
 verbose=${verbose:-""}
@@ -43,9 +44,12 @@ grep -e "^$hostid:" $config >/dev/null 2>&1 || {
 	echo "$cmd: host id \"$hostid\" not found in $config."
 	exit 2
 }
+sed -ne '/^'$hostid':/,/^[\t ]*$/{
+	/^[ \t]*[^=]*=.*$/p
+}' $config >$tconf
 eval `sed -ne '/^'$hostid':/,/^[\t ]*$/{
 		/^[ \t]*[^=]*=.*$/p
-	}' $config`
+	}' $tconf`
 
 age=${age:-100} # max age in days before deletion
 [ "$orage" ] && age=$orage # command line trumps default and config

@@ -7,6 +7,7 @@ dougal:
 caswallon:
 	age=30
 	wd=/var
+	target:/var/local/squirrebrianail/attach 3
 ######################################################################
 # This program is free software: you can redistribute it and or      #
 # modify it under the terms of the Lesser GNU General Public License #
