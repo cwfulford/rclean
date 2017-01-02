@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: rclean,v 1.151 2017/01/02 19:28:39 fulford Exp fulford $
+# $Id: rclean,v 1.152 2017/01/02 19:39:34 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/rclean,v $
-# $Revision: 1.151 $
+# $Revision: 1.152 $
 # Author C W Fulford.
 # Copyright (c) 2012-2013 C W Fulford.
 # Licensed for public use under the LGPL.
@@ -116,6 +116,7 @@ while read f ;do
 	fi
 done
 
+awk  <$tconf '/target:/ {split(t,":",$1);cmd="find $2 -ctime=$3 -ls"}' 
 # use local0.info to match rsyslog configuration
 if [ $log ];then 
 	cfd=\$(<\$dcount)
