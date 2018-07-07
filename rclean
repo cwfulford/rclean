@@ -1,6 +1,6 @@
 #!/bin/bash
-# $Id: rclean,v 1.154 2017/01/02 19:54:55 fulford Exp fulford $
-# $Source: /src/merlin/usr/local/etc/RCS/rclean,v $
+# $Id: rclean,v 1.154 2017/01/02 19:54:55 fulford Exp $
+# $Source: /src/admin/usr/local/etc/RCS/rclean,v $
 # $Revision: 1.154 $
 # Author C W Fulford.
 # Copyright (c) 2012-2013 C W Fulford.
